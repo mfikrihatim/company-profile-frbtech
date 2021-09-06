@@ -87,4 +87,5 @@ class User extends CI_Controller
           </button></div>');
         $this->output->set_output(json_encode($msg));
     }
+
 }

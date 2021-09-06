@@ -2,14 +2,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Ganti_pass extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("User_m"); //load model user
+        $this->load->model("User_m"); //load model ganti_pass
     }
 
+    //method pertama yang akan di eksekusi
     //method pertama yang akan di eksekusi
     public function index()
     {
@@ -21,7 +22,7 @@ class User extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
         //load view index.php pada folder views/user
-        $this->load->view('user/index', $data);
+        $this->load->view('ganti_pass/index', $data);
         $this->load->view('templates/footer');
     }
 
@@ -44,7 +45,7 @@ class User extends CI_Controller
         $data["title"] = "Tambah Data user";
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('user/add', $data);
+        $this->load->view('ganti_pass/add', $data);
         $this->load->view('templates/footer');
     }
 
@@ -70,7 +71,7 @@ class User extends CI_Controller
         if (!$data["data_user"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar');
-        $this->load->view('user/edit', $data);
+        $this->load->view('ganti_pass/edit', $data);
         $this->load->view('templates/footer');
     }
 
@@ -86,5 +87,22 @@ class User extends CI_Controller
             <span aria-hidden="true">&times;</span>
           </button></div>');
         $this->output->set_output(json_encode($msg));
+    }
+
+    public function gantiPass()
+    {
+        $data['title'] = 'Ganti Password';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->user('username')])->row();
+
+        $this->form_validation->set_rules('password_lama', 'Password Lama', 'required|trim');
+        $this->form_validation->set_rules('password_baru1', 'Password Baru', 'required|trim|matches[password_baru2]');
+        $this->form_validation->set_rules('password_baru2', 'Konfirmasi Password', 'required|trim|matches[password_baru1]');
+
+        if($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar');
+            $this->load->view('ganti_pass/edit', $data);
+            $this->load->view('templates/footer');
+        }
     }
 }
