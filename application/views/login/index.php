@@ -1,109 +1,92 @@
-<div class="content-wrapper">
-<div class="container pt-5">
-    <h3><?= $title ?></h3>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>slider</a></li>
-            <li class="breadcrumb-item active" aria-current="page">List Data</li>
-        </ol>
-    </nav>
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('slider/add'); ?>">Tambah Data</a>
-            <div mb-2>
-                <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
-                <?php if ($this->session->flashdata('message')) :
-                    echo $this->session->flashdata('message');
-                endif; ?>
-            </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableSlider">
-                            <thead>
-                                <tr class="table-success">
-                                    <th></th>
-                                    <th>NAMA</th>
-                                    <th>JENIS KELAMIN</th>
-                                    <th>ALAMAT</th>
-                                    <th>AGAMA</th>
-                                    <th>NO HP</th>
-                                    <th>EMAIL</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($data_slider as $row) : ?>
-                                    <tr>
-                                        <td>
-                                            <a href="<?= site_url('slider/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                        <td><?= $row->Nama ?></td>
-                                        <td><?= $row->JenisKelamin ?></td>
-                                        <td><?= $row->Alamat ?></td>
-                                        <td><?= $row->Agama ?></td>
-                                        <td><?= $row->NoHp ?></td>
-                                        <td><?= $row->Email ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdminLTE 3 | Log in</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/plugins/fontawesome-free/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form action="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/index3.html" method="post">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-
-<!-- Modal dialog hapus data-->
-<div class="modal fade" id="myModalDelete" tabindex="-1" aria-labelledby="myModalDeleteLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalDeleteLabel">Konfirmasi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
             </div>
-            <div class="modal-body">
-                Anda ingin menghapus data ini?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                <button type="button" class="btn btn-danger" id="btdelete">Lanjutkan</button>
-            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center mb-3">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+        </a>
+      </div>
+      <!-- /.social-auth-links -->
+
+      <p class="mb-1">
+        <a href="forgot-password.html">I forgot my password</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Register a new membership</a>
+      </p>
     </div>
+    <!-- /.login-card-body -->
+  </div>
 </div>
-</div>
+<!-- /.login-box -->
 
-<script>
-    //menampilkan data ketabel dengan plugin datatables
-    $('#tableSlider').DataTable();
-
-    //menampilkan modal dialog saat tombol hapus ditekan
-    $('#tableSlider').on('click', '.item-delete', function() {
-        //ambil data dari atribute data 
-        var id = $(this).attr('data');
-        $('#myModalDelete').modal('show');
-        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete 
-        //pada controller slider
-        $('#btdelete').unbind().click(function() {
-            $.ajax({
-                type: 'ajax',
-                method: 'get',
-                async: false,
-                url: '<?php echo base_url() ?>slider/delete/',
-                data: {
-                    id: id
-                },
-                dataType: 'json',
-                success: function(response) {
-                    $('#myModalDelete').modal('hide');
-                    location.reload();
-                }
-            });
-        });
-    });
-</script>
+<!-- jQuery -->
+<script src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?=base_url('assets');?>/vendor/AdminLTE-3.0.5/dist/js/adminlte.min.js"></script>
+</body>
+</html>
