@@ -45,7 +45,7 @@
                                 <option value="0" <?php if (set_value('status_id') == "0") : echo "selected";
                                                         endif; ?>>0</option>
                                 <option value="1" <?php if (set_value('status_id') == "1") : echo "selected";
-                                                            endif; ?>>1</option>
+                                                        endif; ?>>1</option>
                             </select>
                             <small class="text-danger">
                                 <?php echo form_error('status_id') ?>

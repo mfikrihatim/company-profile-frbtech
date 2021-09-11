@@ -6,53 +6,41 @@ class Ganti_pass_m extends CI_Model
     private $table = 'user';
     public $username;
     public $password;
-
-    //validasi form, method ini akan mengembailkan data berupa rules validasi form       
+     
     public function rules()
     {
         return [
             [
-                'field' => 'password_lama',
-                'label' => 'password',
+                'field' => 'currentPassword',
+                'label' => 'Password lama',
                 'rules' => 'trim|required'
             ],
             [
-                'field' => 'password_baru1',
-                'label' => 'password_baru1',
-                'rules' => 'trim|required|matches[password_baru2]'
+                'field' => 'newPassword1',
+                'label' => 'Password baru',
+                'rules' => 'trim|required|matches[newPassword2]'
             ],
             [
-                'field' => 'password_baru2',
-                'label' => 'password_baru2',
-                'rules' => 'trim|required|matches[password_baru1]'
+                'field' => 'newPassword2',
+                'label' => 'Konfirmasi password',
+                'rules' => 'trim|required|matches[newPassword1]'
             ],
         ];
     }
 
-    //menampilkan data mahasiswa berdasarkan id mahasiswa
-    public function getById($id)
+    public function getBySession()
     {
-        return $this->db->get_where($this->table, ["id" => $id])->row();
-        //query diatas seperti halnya query pada mysql 
-        //select * from mahasiswa where id='$id'
+        $this->db->get_where($this->table, ['username' => $this->session->userdata('username')])->row_array();
     }
 
-    //menyimpan data mahasiswa
-    public function save()
-    {
-        $data = array(
-            "password" => $this->input->post('password')
-        );
-        return $this->db->insert($this->table, $data);
-    }
-
-    //edit data mahasiswa
     public function update()
     {
         $data = array(
-            "password" => $this->input->post('password')
+            "username" => $this->input->post('username'),
+            "password" => $this->input->post('password'),
+            "status_id" => $this->input->post('status_id')
         );
-        return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
+        return $this->db->update($this->table, $data, array('id' => $this->input->post('password')));
     }
 
 }
