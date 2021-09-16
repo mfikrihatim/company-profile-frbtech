@@ -71,31 +71,4 @@ class Ganti_pass extends CI_Controller
 
     }
 
-    public function edit($id = null)
-    {
-        if (!isset($id)) redirect('user');
-
-        $user = $this->Ganti_pass_m;
-        $validation = $this->form_validation;
-        $validation->set_rules($user->rules());
-
-        if ($validation->run()) {
-            $user->update();
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data user berhasil disimpan.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button></div>');
-            redirect("user");
-        }
-        $data["title"] = "Edit Data user";
-        $data["data_user"] = $user->getById($id);
-        if (!$data["data_user"]) show_404();
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
-        $this->load->view('templates/sidebar');
-        $this->load->view('ganti_pass/edit', $data);
-        $this->load->view('templates/footer');
-    }
-
 }
