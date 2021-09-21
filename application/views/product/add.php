@@ -42,7 +42,7 @@
                         <label for="foto" class="col-sm-2 col-form-label">Foto</label>
                         <div class="col-sm-10">
                             <!-- <input type="text" class="form-control" id="foto" name="foto" value=" <?= set_value('foto'); ?>"> -->
-                            <input type="file" name="foto" multiple><br>
+                            <input type="file" class="form-control-file" name="foto" multiple><br>
                             <small class="text-danger">
                                 <?php echo form_error('foto') ?>
                             </small>
