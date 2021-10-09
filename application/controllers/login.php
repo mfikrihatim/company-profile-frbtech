@@ -9,7 +9,11 @@ class Login extends CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('auth/login');
+		$data["title"] = "Login Page";
+
+        $this->load->view('auth/templates/auth_header', $data);
+        $this->load->view('auth/login');
+        $this->load->view('auth/templates/auth_footer');
 	}
 
 	function aksi_login(){
@@ -17,13 +21,13 @@ class Login extends CI_Controller{
 		$password = $this->input->post('password');
 		$where = array(
 			'username' => $username,
-			'password' => md5($password)
+			'password' => $password
 			);
 		$cek = $this->m_login->cek_login("user",$where)->num_rows();
 		if($cek > 0){
 
 			$data_session = array(
-				'nama' => $username,
+				'username' => $username,
 				'status' => "login"
 				);
 
