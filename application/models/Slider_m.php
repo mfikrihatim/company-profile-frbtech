@@ -4,34 +4,26 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Slider_m extends CI_Model
 {
     private $table = 'slider';
-    public $foto;
+	
+    public $foto = "default.jpg";
     public $judul;
     public $deskripsi;
     public $status_id;
-    
+     
     public function rules()
     {
         return [
-            [
-                'field' => 'foto',
-                'label' => 'foto',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'judul',
-                'label' => 'judul',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'deskripsi',
-                'label' => 'deskripsi',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'status_id',
-                'label' => 'status_id',
-                'rules' => 'trim|required'
-            ]
+            ['field' => 'judul',  
+            'label' => 'judul',  
+            'rules' => 'trim|required'],
+
+            ['field' => 'deskripsi',
+            'label' => 'deskripsi',
+            'rules' => 'trim|required'],
+
+			['field' => 'status_id',
+            'label' => 'status_id',
+            'rules' => 'trim|required']
         ];
     }
 
@@ -50,28 +42,61 @@ class Slider_m extends CI_Model
 
     public function save()
     {
-        $data = array(
-            "foto" => $this->input->post('foto'),
-            "judul" => $this->input->post('judul'),
-            "deskripsi" => $this->input->post('deskripsi'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->insert($this->table, $data);
+		$post = $this->input->post();
+		$this->judul = $post["judul"];
+		$this->deskripsi = $post["deskripsi"];
+		$this->foto = $this->_uploadFoto();
+		$this->status_id = $post["status_id"];
+		$this->db->insert($this->table, $this);
     }
 
     public function update()
     {
-        $data = array(
-            "foto" => $this->input->post('foto'),
-            "judul" => $this->input->post('judul'),
-            "deskripsi" => $this->input->post('deskripsi'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
+		$post = $this->input->post();
+		$this->judul = $post["judul"];
+		$this->deskripsi = $post["deskripsi"];
+		
+		if (!empty($_FILES["foto"]["judul"])) {
+            $this->foto = $this->_uploadFoto();
+        } else {
+            $this->foto = $post["foto_lama"];
+		}
+
+		$this->status_id = $post["status_id"];
+		$this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)
     {
+		$this->_hapusFoto($id);
         return $this->db->delete($this->table, array("id" => $id));
     }
+
+	private function _uploadFoto()
+	{
+		$config['upload_path']          = './upload/slider/';
+		$config['allowed_types']        = 'gif|jpg|png|pdf';
+		$config['file_name']            = $this->foto;
+		$config['overwrite']			= true;
+		$config['max_size']             = 20480; // 20MB
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('foto')) {
+			return $this->upload->data("file_name");
+		}
+		
+		return "default.jpg";
+	}
+
+	private function _hapusFoto($id)
+	{
+		$slider = $this->getById($id);
+		if ($slider->foto != "default.jpg") {
+			$filename = explode(".", $slider->foto)[0];
+			return array_map('unlink', glob(FCPATH."upload/slider/$filename.*"));
+		}
+	}
 }

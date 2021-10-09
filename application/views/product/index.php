@@ -9,7 +9,6 @@
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('product/add'); ?>">Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -17,43 +16,48 @@
                 endif; ?>
             </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableProduct">
-                            <thead>
-                                <tr class="table-success">
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Deskripsi</th>
-                                    <th>Foto</th>
-                                    <th>Link</th>
-                                    <th>Status Id</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                $no=1;
-                                foreach ($data_product as $row) : ?>
-                                    <tr>
+            <div class="card mb-3">
+					<div class="card-header">
+						<a href="<?php echo site_url('product/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+					</div>
+					<div class="card-body">
+
+						<div class="table-responsive">
+							<table class="table table-hover" id="tableProduct" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<!-- <th>id</th> -->
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                        <th>Deskripsi</th>
+                                        <th>Foto</th>
+                                        <th>Link</th>
+                                        <th>Status Id</th>
+                                        <th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php $no=1; foreach ($data_product as $row): ?>
+									<tr>
+										<!-- <td><?= $row->id ?></td> -->
                                         <td><?= $no++ ?></td>
                                         <td><?= $row->nama ?></td>
                                         <td><?= $row->deskripsi ?></td>
-                                        <td><img src="<?= base_url('upload/product/'.$row->foto) ?>"></td>
+										<td><img src="<?php echo base_url('upload/product/'.$row->foto) ?>" width="64" /></td>
                                         <td><?= $row->link ?></td>
-                                        <td><?= $row->status_id ?></td> 
-                                        <td>
-                                            <a href="<?= site_url('product/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+                                        <td><?= $row->status_id ?></td>
+										<td width="200">
+											<a href="<?= site_url('product/edit/' . $row->id) ?>" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
+                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger item-delete"><i class="fa fa-trash"></i> Hapus</a>
+										</td>
+									</tr>
+									<?php endforeach; ?>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
         </div>
     </div>
 </div>
@@ -79,6 +83,26 @@
     </div>
 </div>
 </div>
+
+<!-- Logout Delete Confirmation-->
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 
 <script>
     //menampilkan data ketabel dengan plugin datatables
@@ -109,3 +133,10 @@
         });
     });
 </script>
+
+<!-- <script>
+	function deleteConfirm(url){
+		$('#btn-delete').attr('href', url);
+		$('#deleteModal').modal();
+	}
+</script> -->
