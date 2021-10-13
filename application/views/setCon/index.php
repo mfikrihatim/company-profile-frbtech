@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-<div class=" p-5">
+<div class="container py-5">
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
@@ -9,7 +9,6 @@
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('setCon/add'); ?>">Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -18,11 +17,14 @@
             </div>
 
             <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableSetCon">
-                            <thead>
-                                <tr class="table-success">
+				<div class="card-header">
+					<a href="<?php echo site_url('setCon/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover" id="tableSetCon" width="100%" cellspacing="0">
+							<thead>
+								<tr>
                                     <th>No</th>
                                     <th>Alamat</th>
                                     <th>No Telepon</th>
@@ -33,9 +35,9 @@
                                     <th>Status Id</th>
                                     <th>Action</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php
+							</thead>
+							<tbody>
+								<?php
                                 $no=1;
                                 foreach ($data_setCon as $row) : ?>
                                     <tr>
@@ -48,15 +50,15 @@
                                         <td><?= $row->whatsapp ?></td>
                                         <td><?= $row->status_id ?></td>
                                         <td>
-                                            <a href="<?= site_url('setCon/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
+                                            <a href="<?= site_url('setCon/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+							</tbody>
+						</table>
+					</div>
+				</div>
             </div>
         </div>
     </div>

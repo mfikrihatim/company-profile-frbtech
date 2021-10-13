@@ -10,7 +10,7 @@ class Product extends CI_Controller
         $this->load->model("Product_m");
 
         if($this->session->userdata('status_id') != '1'){
-            $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Anda belum Login!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -38,7 +38,6 @@ class Product extends CI_Controller
         $validation->set_rules($product->rules()); 
         if ($validation->run()) {
             $product->save();
-            $product->upload();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
             Data product berhasil disimpan. 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -73,6 +72,7 @@ class Product extends CI_Controller
         }
         $data["title"] = "Edit Data product";
         $data["data_product"] = $product->getById($id);
+		$data["data_product"]->foto = $data["data_product"]->foto;
         if (!$data["data_product"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

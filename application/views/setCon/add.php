@@ -11,13 +11,11 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+				<div class="card-header">
+					<a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
+				</div>
                 <div class="card-body">
-                    <?php
-                    //create form
-                    $attributes = array('id' => 'FrmAddSetCon', 'method' => "post", "autocomplete" => "off");
-                    echo form_open('', $attributes);
-                    ?>
-                  
+					<form action="<?php base_url("setCon/add") ?>" method="post" enctype="multipart/form-data" >
 
                     <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
@@ -100,7 +98,6 @@
                     <div class="form-group row">
                         <div class="col-sm-10 offset-md-2">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a class="btn btn-secondary" href="javascript:history.back()">Kembali</a>
                         </div>
                     </div>
                     </form>

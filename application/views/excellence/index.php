@@ -3,13 +3,12 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Excellence</a></li>
+            <li class="breadcrumb-item"><a>excellence</a></li>
             <li class="breadcrumb-item active" aria-current="page">List Data</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <a class="btn btn-primary mb-2" href="<?= base_url('excellence/add'); ?>">Tambah Data</a>
             <div mb-2>
                 <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
                 <?php if ($this->session->flashdata('message')) :
@@ -18,39 +17,42 @@
             </div>
 
             <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="tableExcellence">
-                            <thead>
-                                <tr class="table-success">
-                                    <th>No</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th>Icon</th>
-                                    <th>Status Id</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                $no=1;
-                                foreach ($data_excellence as $row) : ?>
-                                    <tr>
-                                        <td><?= $no++ ?></td>
-                                        <td><?= $row->judul ?></td>
-                                        <td><?= $row->deskripsi ?></td>
-                                        <td><?= $row->icon ?></td>
-                                        <td><?= $row->status_id ?></td> 
-                                        <td>
-                                            <a href="<?= site_url('excellence/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> </a>
-                                            <a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+				<div class="card-header">
+					<a href="<?php echo site_url('excellence/add') ?>"><i class="fas fa-plus"></i> Add New</a>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover" id="tableExcellence" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<!-- <th>id</th> -->
+									<th>No</th>
+									<th>Judul</th>
+									<th>Deskripsi</th>
+									<th>Icon</th>
+									<th>Status Id</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $no=1; foreach ($data_excellence as $row): ?>
+								<tr>
+									<!-- <td><?= $row->id ?></td> -->
+									<td><?= $no++ ?></td>
+									<td><?= $row->judul ?></td>
+									<td><?= $row->deskripsi ?></td>
+									<td><img src="<?php echo base_url('upload/excellence/'.$row->icon) ?>" width="64" /></td>
+									<td><?= $row->status_id ?></td>
+									<td width="200">
+										<a href="<?= site_url('excellence/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+										<a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> Hapus</a>
+									</td>
+								</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
             </div>
         </div>
     </div>

@@ -72,6 +72,7 @@ class Portofolio extends CI_Controller
         }
         $data["title"] = "Edit Data portofolio";
         $data["data_portofolio"] = $portofolio->getById($id);
+		$data["data_portofolio"]->foto = $data["data_portofolio"]->foto;
         if (!$data["data_portofolio"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

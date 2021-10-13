@@ -4,6 +4,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class SetCon_m extends CI_Model
 {
     private $table = 'setting_contact';
+
+	public $id;
     public $alamat;
     public $no_telp;
     public $email;
@@ -15,41 +17,33 @@ class SetCon_m extends CI_Model
     public function rules()
     {
         return [
-            [
-                'field' => 'alamat',  
-                'label' => 'alamat',  
-                'rules' => 'trim|required' 
-            ],
-            [
-                'field' => 'no_telp',
-                'label' => 'no_telp',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'email',
-                'label' => 'email',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'instagram',
-                'label' => 'instagram',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'linkedin',
-                'label' => 'linkedin',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'whatsapp',
-                'label' => 'whatsapp',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'status_id',
-                'label' => 'status_id',
-                'rules' => 'trim|required'
-            ]
+            ['field' => 'alamat',  
+            'label' => 'alamat',  
+            'rules' => 'trim|required'],
+
+            ['field' => 'no_telp',
+            'label' => 'no_telp',
+            'rules' => 'trim|required'],
+
+            ['field' => 'email',
+            'label' => 'email',
+            'rules' => 'trim|required'],
+
+            ['field' => 'instagram',
+            'label' => 'instagram',
+            'rules' => 'trim|required'],
+
+            ['field' => 'linkedin',
+            'label' => 'linkedin',
+            'rules' => 'trim|required'],
+
+            ['field' => 'whatsapp',
+            'label' => 'whatsapp',
+            'rules' => 'trim|required'],
+
+            ['field' => 'status_id',
+            'label' => 'status_id',
+            'rules' => 'trim|required']
         ];
     }
 
@@ -68,30 +62,30 @@ class SetCon_m extends CI_Model
 
     public function save()
     {
-        $data = array(
-            "alamat" => $this->input->post('alamat'),
-            "no_telp" => $this->input->post('no_telp'),
-            "email" => $this->input->post('email'),
-            "instagram" => $this->input->post('instagram'),
-            "linkedin" => $this->input->post('linkedin'),
-            "whatsapp" => $this->input->post('whatsapp'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->insert($this->table, $data);
+        $post = $this->input->post();
+        $this->alamat = $post['alamat'];
+        $this->no_telp = $post['no_telp'];
+        $this->email = $post['email'];
+        $this->instagram = $post['instagram'];
+        $this->linkedin = $post['linkedin'];
+        $this->whatsapp = $post['whatsapp'];
+        $this->status_id = $post['status_id'];
+        
+        $this->db->insert($this->table, $this);
     }
 
     public function update()
     {
-        $data = array(
-            "alamat" => $this->input->post('alamat'),
-            "no_telp" => $this->input->post('no_telp'),
-            "email" => $this->input->post('email'),
-            "instagram" => $this->input->post('instagram'),
-            "linkedin" => $this->input->post('linkedin'),
-            "whatsapp" => $this->input->post('whatsapp'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
+        $post = $this->input->post();
+        $this->alamat = $post['alamat'];
+        $this->no_telp = $post['no_telp'];
+        $this->email = $post['email'];
+        $this->instagram = $post['instagram'];
+        $this->linkedin = $post['linkedin'];
+        $this->whatsapp = $post['whatsapp'];
+        $this->status_id = $post['status_id'];
+        
+        $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)

@@ -26,7 +26,6 @@ class Client extends CI_Controller
         $data["data_client"] = $this->Client_m->getAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
-        $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
         $this->load->view('client/index', $data);
         $this->load->view('templates/footer');
@@ -48,7 +47,6 @@ class Client extends CI_Controller
         }
         $data["title"] = "Tambah Data client";
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
         $this->load->view('client/add', $data);
@@ -74,9 +72,9 @@ class Client extends CI_Controller
         }
         $data["title"] = "Edit Data client";
         $data["data_client"] = $client->getById($id);
+		$data["data_client"]->logo_client = $data["data_client"]->logo_client;
         if (!$data["data_client"]) show_404();
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/navbar');
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
         $this->load->view('client/edit', $data);

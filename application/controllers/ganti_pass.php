@@ -22,8 +22,8 @@ class Ganti_pass extends CI_Controller
     public function index()
     {
 
-        $data["title"] = "Ganti Password";
-        $data["data_user"] = $this->Ganti_pass_m->getBySession();
+        $data["title"] = "List Data User";
+        $data["data_user"] = $this->Ganti_pass_m->getAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
         $this->load->view('templates/sidebar');
@@ -31,44 +31,67 @@ class Ganti_pass extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function change()
+    public function add()
     {
-        $pass = $this->Ganti_pass_m;
+        $user = $this->Ganti_pass_m;
         $validation = $this->form_validation;
-        $validation->set_rules($pass->rules());
-
-        $data["title"] = "Ganti Password";
-        $data["data_user"] = $this->Ganti_pass_m->getBySession();
-
-        if($validation->run() == FALSE){
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('templates/sidebar');
-            $this->load->view('ganti_pass/index', $data);
-            $this->load->view('templates/footer');
-        } else {
-            $currentPassword = $this->input->post('currentPassword');
-            $newPassword = $this->input->post('newPassword1'); 
-            if(!password_verify($currentPassword, $data['username']['password'])){
-                $this->session->flashdata('pesan', '<div class="alert alert-danger" role="alert">Password sekarang salah!</div>');
-                redirect('ganti_pass');
-            } else {
-                if($currentPassword == $newPassword){
-                    $this->session->flashdata('pesan', '<div class="alert alert-danger" role="alert">Password baru tidak boleh sama dengan password lama!</div>');
-                    redirect('ganti_pass');
-                } else {
-                    //password sudah ok
-                    // $password_hash = password_hash($newPassword, PASSWORD_DEFAULT);
-                    $this->db->set('password');
-                    $this->db->where($this->table, $this->session->userdata('username'));
-                    $this->db->update($this->table);
-
-                    $this->session->flashdata('pesan', '<div class="alert alert-success" role="alert">Password berhasil diganti!</div>');
-                    redirect('ganti_pass/change');
-                }
-            }
+        $validation->set_rules($user->rules());
+        if ($validation->run()) {
+            $user->save();
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data user berhasil disimpan. 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button></div>');
+            redirect("ganti_pass");
         }
+        $data["title"] = "Tambah Data user";
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('ganti_pass/add', $data);
+        $this->load->view('templates/footer');
+    }
 
+    public function edit($id = null)
+    {
+        if (!isset($id)) redirect('ganti_pass');
+
+        $user = $this->Ganti_pass_m;
+        $validation = $this->form_validation;
+        $validation->set_rules($user->rules());
+
+        if ($validation->run()) {
+            $user->update();
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data user berhasil disimpan.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button></div>');
+            redirect("ganti_pass");
+        }
+        $data["title"] = "Ganti Password";
+        $data["data_user"] = $user->getById($id);
+        if (!$data["data_user"]) show_404();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar');
+        $this->load->view('templates/sidebar');
+        $this->load->view('ganti_pass/edit', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function delete()
+    {
+        $id = $this->input->get('id');
+        if (!isset($id)) show_404();
+        $this->Ganti_pass_m->delete($id);
+        $msg['success'] = true;
+        $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        Data user berhasil dihapus.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button></div>');
+        $this->output->set_output(json_encode($msg));
     }
 
 }

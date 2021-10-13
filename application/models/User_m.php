@@ -4,28 +4,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class User_m extends CI_Model
 {
     private $table = 'user';
+
     public $username;
     public $password;
     public $status_id;
-  
+     
     public function rules()
     {
         return [
-            [
-                'field' => 'username', 
-                'label' => 'username',  
-                'rules' => 'trim|required' 
-            ],
-            [
-                'field' => 'password',
-                'label' => 'password',
-                'rules' => 'trim|required'
-            ],
-            [
-                'field' => 'status_id',
-                'label' => 'status_id',
-                'rules' => 'trim|required'
-            ],
+            ['field' => 'username',  
+            'label' => 'username',  
+            'rules' => 'trim|required'],
+
+            ['field' => 'password',
+            'label' => 'password',
+            'rules' => 'trim|required'],
+
+			['field' => 'status_id',
+            'label' => 'status_id',
+            'rules' => 'trim|required']
         ];
     }
 
@@ -44,22 +41,22 @@ class User_m extends CI_Model
 
     public function save()
     {
-        $data = array(
-            "username" => $this->input->post('username'),
-            "password" => $this->input->post('password'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->insert($this->table, $data);
+		$post = $this->input->post();
+		$this->username = $post["username"];
+		$this->password = $post["password"];
+		$this->status_id = $post["status_id"];
+
+		$this->db->insert($this->table, $this);
     }
 
     public function update()
     {
-        $data = array(
-            "username" => $this->input->post('username'),
-            "password" => $this->input->post('password'),
-            "status_id" => $this->input->post('status_id')
-        );
-        return $this->db->update($this->table, $data, array('id' => $this->input->post('id')));
+		$post = $this->input->post();
+		$this->username = $post["username"];
+		$this->password = $post["password"];
+		$this->status_id = $post["status_id"];
+		
+		$this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)

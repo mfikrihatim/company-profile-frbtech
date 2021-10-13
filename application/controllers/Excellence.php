@@ -72,6 +72,7 @@ class Excellence extends CI_Controller
         }
         $data["title"] = "Edit Data excellence";
         $data["data_excellence"] = $excellence->getById($id);
+		$data["data_excellence"]->icon = $data["data_excellence"]->icon;
         if (!$data["data_excellence"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

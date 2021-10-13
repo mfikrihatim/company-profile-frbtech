@@ -72,6 +72,7 @@ class Services extends CI_Controller
         }
         $data["title"] = "Edit Data services";
         $data["data_services"] = $services->getById($id);
+        $data["data_services"]->icon = $data["data_services"]->icon;
         if (!$data["data_services"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ob_start();
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/company-profile-frbtech/';
+$config['base_url'] = 'http://localhost/company-profile-frbtech-new/';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = 'http://localhost/company-profile-frbtech/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'login';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

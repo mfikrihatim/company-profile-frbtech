@@ -3,42 +3,101 @@
     <h3><?= $title ?></h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb ">
-            <li class="breadcrumb-item"><a>Ganti password</a></li>
+            <li class="breadcrumb-item"><a>user</a></li>
+            <li class="breadcrumb-item active" aria-current="page">List Data</li>
         </ol>
     </nav>
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <!-- <form action="<?= base_url('ganti_pass/change') ?>" method="post"> -->
-                    <?php
-                    //create form
-                    $attributes = array('id' => 'FrmGantiPass', 'method' => "post", "autocomplete" => "off");
-                    echo form_open('', $attributes);
-                    ?>
-                    <div class="form-group pb-2">
-                        <label for="currentPassword">Password lama</label>
-                        <input type="password" name="currentPassword" class="form-control" id="currentPassword" placeholder="Password sekarang" required>
-                        <?= form_error('currentPassword', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="newPassword1">Password baru</label>
-                        <input type="password" name="newPassword1" class="form-control" id="newPassword1" placeholder="Password baru" required>
-                        <?= form_error('newPassword1', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group pb-2">
-                        <label for="newPassword2">Konfirmasi password</label>
-                        <input type="password" name="newPassword2" class="form-control" id="newPassword2" placeholder="Konfirmasi password" required>
-                        <?= form_error('newPassword2', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Ganti Password</button>
-                    </div>
+            <div mb-2>
+                <!-- Menampilkan flashh data (pesan saat data berhasil disimpan)-->
+                <?php if ($this->session->flashdata('message')) :
+                    echo $this->session->flashdata('message');
+                endif; ?>
+            </div>
 
-                    </form>
-                </div>
+            <div class="card">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover" id="tableUser" width="100%" cellspacing="0">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Username</th>
+									<th>Password</th>
+									<th>Status Id</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $no=1; foreach ($data_user as $row): ?>
+								<tr>
+									<td><?= $no++ ?></td>
+									<td><?= $row->username ?></td>
+									<td><?= $row->password ?></td>
+									<td><?= $row->status_id ?></td>
+									<td width="200">
+										<a href="<?= site_url('ganti_pass/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+									</td>
+								</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal dialog hapus data-->
+<div class="modal fade" id="myModalDelete" tabindex="-1" aria-labelledby="myModalDeleteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalDeleteLabel">Konfirmasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Anda ingin menghapus data ini?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-danger" id="btdelete">Lanjutkan</button>
             </div>
         </div>
     </div>
 </div>
 </div>
+
+<script>
+    //menampilkan data ketabel dengan plugin datatables
+    $('#tableUser').DataTable();
+
+    //menampilkan modal dialog saat tombol hapus ditekan
+    $('#tableUser').on('click', '.item-delete', function() {
+        //ambil data dari atribute data 
+        var id = $(this).attr('data');
+        $('#myModalDelete').modal('show');
+        //ketika tombol lanjutkan ditekan, data id akan dikirim ke method delete 
+        //pada controller user
+        $('#btdelete').unbind().click(function() {
+            $.ajax({
+                type: 'ajax',
+                method: 'get',
+                async: false,
+                url: '<?php echo base_url() ?>user/delete/',
+                data: {
+                    id: id
+                },
+                dataType: 'json',
+                success: function(response) {
+                    $('#myModalDelete').modal('hide');
+                    location.reload();
+                }
+            });
+        });
+    });
+</script>
