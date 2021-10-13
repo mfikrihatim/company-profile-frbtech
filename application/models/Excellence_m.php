@@ -41,51 +41,49 @@ class Excellence_m extends CI_Model
     }
 
     public function save()
-    {
+    {   
 		$post = $this->input->post();
 		$this->judul = $post["judul"];
 		$this->deskripsi = $post["deskripsi"];
-		$this->icon = $this->_uploadFoto();
+		$this->icon = $this->_uploadIcon();
 		$this->status_id = $post["status_id"];
-
 		$this->db->insert($this->table, $this);
     }
 
     public function update()
     {
-		$post = $this->input->post();
+        $post = $this->input->post();
 		$this->judul = $post["judul"];
 		$this->deskripsi = $post["deskripsi"];
 		
-		if (!empty($_FILES["icon"]["judul"])) {
-            $this->icon = $this->_uploadFoto();
+		if (!empty($_FILES["icon"]["name"])) {
+            $this->icon = $this->_uploadIcon();
         } else {
             $this->icon = $post["icon_lama"];
 		}
 
 		$this->status_id = $post["status_id"];
-		
 		$this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)
     {
-		$this->_hapusFoto($id);
+		$this->_hapusIcon($id);
         return $this->db->delete($this->table, array("id" => $id));
-    }
-
-	private function _uploadFoto()
+	}
+	
+	private function _uploadIcon()
 	{
-		$config['upload_path']          = './upload/excellence/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf';
-		$config['file_name']            = $this->icon;
-		$config['overwrite']			= true;
-		$config['max_size']             = 20480; // 20MB
+		$config['upload_path']          = '././upload/excellence/';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['file_name']            = $this->judul;
+		// $config['overwrite']			= true;
+		// $config['max_size']             = 20480; // 20MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-
+		$this->upload->initialize($config);
 		if ($this->upload->do_upload('icon')) {
 			return $this->upload->data("file_name");
 		}
@@ -93,7 +91,7 @@ class Excellence_m extends CI_Model
 		return "default.jpg";
 	}
 
-	private function _hapusFoto($id)
+	private function _hapusIcon($id)
 	{
 		$excellence = $this->getById($id);
 		if ($excellence->icon != "default.jpg") {

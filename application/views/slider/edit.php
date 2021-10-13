@@ -23,6 +23,7 @@
 					<div class="col-sm-10">
 						<input class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" type="file" name="foto" />
 						<input type="hidden" name="foto_lama" value="<?php echo $data_slider->foto ?>" />
+						<img src="<?php echo site_url() . "upload/slider/"   . $data_slider->foto ?>" width="100" height="100">
 						<small class="invalid-feedback">
 							<?php echo form_error('foto') ?>
 						</small>

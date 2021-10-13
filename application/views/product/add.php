@@ -13,56 +13,70 @@
             <div class="card">
 				<div class="card-header">
 					<a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
-					<!-- <a class="btn btn-secondary" href="">Kembali</a> -->
 				</div>
                 <div class="card-body">
-						<form action="<?php base_url('product/add') ?>" method="post" enctype="multipart/form-data" >
-							<div class="form-group">
-								<label for="nama">Nama*</label>
+					<form action="<?php base_url('product/add') ?>" method="post" enctype="multipart/form-data" >
+						<div class="form-group row">
+							<label for="nama" class="col-sm-2 col-form-label">Nama*</label>
+							<div class="col-sm-10">
 								<input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" type="text" name="nama" placeholder="Nama product" />
-								<div class="invalid-feedback">
+								<small class="invalid-feedback">
 									<?php echo form_error('nama') ?>
-								</div>
+								</small>
 							</div>
-							
-							<div class="form-group">
-								<label for="deskripsi">Deskripsi*</label>
+						</div>
+						
+						<div class="form-group row">
+							<label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi*</label>
+								<div class="col-sm-10">
 								<textarea class="form-control <?php echo form_error('deskripsi') ? 'is-invalid':'' ?>" name="deskripsi" placeholder="Deskripsi..."></textarea>
-								<div class="invalid-feedback">
+								<small class="invalid-feedback">
 									<?php echo form_error('deskripsi') ?>
-								</div>
+								</small>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label for="foto">Foto</label>
+						<div class="form-group row">
+							<label for="foto" class="col-sm-2 col-form-label">Foto</label>
+							<div class="col-sm-10">
 								<input class="form-control-file <?php echo form_error('foto') ? 'is-invalid':'' ?>" type="file" name="foto" />
-								<div class="invalid-feedback">
+								<!-- <img src="" alt=""> -->
+								<small class="invalid-feedback">
 									<?php echo form_error('foto') ?>
-								</div>
+								</small>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label for="link">Link*</label>
+						<div class="form-group row">
+							<label for="link" class="col-sm-2 col-form-label">Link*</label>
+							<div class="col-sm-10">
 								<input class="form-control <?php echo form_error('link') ? 'is-invalid':'' ?>" type="text" name="link" placeholder="link product" />
-								<div class="invalid-feedback">
+								<small class="invalid-feedback">
 									<?php echo form_error('link') ?>
-								</div>
+								</small>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label for="status_id">Status Id</label>
+						<div class="form-group row">
+							<label for="status_id" class="col-sm-2 col-form-label">Status Id</label>
+							<div class="col-sm-10">
 								<select class="form-control <?php echo form_error('status_id') ? 'is-invalid':'' ?>" id="status_id" name="status_id">
 									<option value="" selected disabled>Pilih</option>
 									<option value="0">0</option>
 									<option value="1">1</option>
 								</select>
-								<div class="invalid-feedback">
+								<small class="invalid-feedback">
 									<?php echo form_error('status_id') ?>
-								</div>
+								</small>
 							</div>
+						</div>
 
-							<input class="btn btn-primary" type="submit" name="btn" value="Simpan" />
-						</form>
+						<div class="form-group row">
+							<div class="col-sm-10 offset-md-2">
+								<button type="submit" class="btn btn-primary">Simpan</button>
+							</div>
+						</div>
+					</form>
 
 					</div>
 

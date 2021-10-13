@@ -44,8 +44,8 @@
 									<td><img src="<?php echo base_url('upload/portofolio/'.$row->foto) ?>" width="64" /></td>
 									<td><?= $row->status_id ?></td>
 									<td width="200">
-										<a href="<?= site_url('portofolio/edit/' . $row->id) ?>" class="btn btn-success"><i class="fa fa-edit"></i> Edit</a>
-										<a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger item-delete"><i class="fa fa-trash"></i> Hapus</a>
+										<a href="<?= site_url('portofolio/edit/' . $row->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+										<a href="javascript:void(0);" data="<?= $row->id ?>" class="btn btn-danger btn-sm item-delete"><i class="fa fa-trash"></i> Hapus</a>
 									</td>
 								</tr>
 								<?php endforeach; ?>

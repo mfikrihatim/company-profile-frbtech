@@ -72,6 +72,7 @@ class Client extends CI_Controller
         }
         $data["title"] = "Edit Data client";
         $data["data_client"] = $client->getById($id);
+		$data["data_client"]->logo_client = $data["data_client"]->logo_client;
         if (!$data["data_client"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

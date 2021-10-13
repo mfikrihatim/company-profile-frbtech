@@ -5,6 +5,7 @@ class SetCon_m extends CI_Model
 {
     private $table = 'setting_contact';
 
+	public $id;
     public $alamat;
     public $no_telp;
     public $email;

@@ -13,7 +13,6 @@
             <div class="card">
 				<div class="card-header">
 					<a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
-					<!-- <a class="btn btn-secondary" href="">Kembali</a> -->
 				</div>
                 <div class="card-body">
 					<form action="<?php base_url('client/add') ?>" method="post" enctype="multipart/form-data" >

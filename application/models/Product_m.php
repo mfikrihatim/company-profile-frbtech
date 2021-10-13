@@ -63,7 +63,7 @@ class Product_m extends CI_Model
 		$this->nama = $post["nama"];
 		$this->deskripsi = $post["deskripsi"];
 		
-		if (!empty($_FILES["foto"]["nama"])) {
+		if (!empty($_FILES["foto"]["name"])) {
             $this->foto = $this->_uploadFoto();
         } else {
             $this->foto = $post["foto_lama"];
@@ -82,16 +82,16 @@ class Product_m extends CI_Model
 	
 	private function _uploadFoto()
 	{
-		$config['upload_path']          = './upload/product/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf';
+		$config['upload_path']          = '././upload/product/';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
 		$config['file_name']            = $this->nama;
-		$config['overwrite']			= true;
-		$config['max_size']             = 20480; // 20MB
+		// $config['overwrite']			= true;
+		// $config['max_size']             = 20480; // 20MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-
+		$this->upload->initialize($config);
 		if ($this->upload->do_upload('foto')) {
 			return $this->upload->data("file_name");
 		}

@@ -72,6 +72,7 @@ class Product extends CI_Controller
         }
         $data["title"] = "Edit Data product";
         $data["data_product"] = $product->getById($id);
+		$data["data_product"]->foto = $data["data_product"]->foto;
         if (!$data["data_product"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

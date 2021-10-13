@@ -41,7 +41,7 @@ class Portofolio_m extends CI_Model
     }
 
     public function save()
-    {
+    {   
 		$post = $this->input->post();
 		$this->nama_portofolio = $post["nama_portofolio"];
 		$this->deskripsi = $post["deskripsi"];
@@ -52,11 +52,11 @@ class Portofolio_m extends CI_Model
 
     public function update()
     {
-		$post = $this->input->post();
+        $post = $this->input->post();
 		$this->nama_portofolio = $post["nama_portofolio"];
 		$this->deskripsi = $post["deskripsi"];
 		
-		if (!empty($_FILES["foto"]["nama_portofolio"])) {
+		if (!empty($_FILES["foto"]["name"])) {
             $this->foto = $this->_uploadFoto();
         } else {
             $this->foto = $post["foto_lama"];
@@ -70,20 +70,20 @@ class Portofolio_m extends CI_Model
     {
 		$this->_hapusFoto($id);
         return $this->db->delete($this->table, array("id" => $id));
-    }
-
+	}
+	
 	private function _uploadFoto()
 	{
-		$config['upload_path']          = './upload/portofolio/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf';
-		$config['file_name']            = $this->foto;
-		$config['overwrite']			= true;
-		$config['max_size']             = 20480; // 20MB
+		$config['upload_path']          = '././upload/portofolio/';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['file_name']            = $this->nama_portofolio;
+		// $config['overwrite']			= true;
+		// $config['max_size']             = 20480; // 20MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-
+		$this->upload->initialize($config);
 		if ($this->upload->do_upload('foto')) {
 			return $this->upload->data("file_name");
 		}

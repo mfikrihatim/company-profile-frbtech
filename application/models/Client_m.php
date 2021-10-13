@@ -35,49 +35,47 @@ class Client_m extends CI_Model
     }
 
     public function save()
-    {
+    {   
 		$post = $this->input->post();
 		$this->nama_client = $post["nama_client"];
 		$this->logo_client = $this->_uploadLogo();
 		$this->status_id = $post["status_id"];
-
 		$this->db->insert($this->table, $this);
     }
 
     public function update()
     {
-		$post = $this->input->post();
+        $post = $this->input->post();
 		$this->nama_client = $post["nama_client"];
 		
-		if (!empty($_FILES["logo_client"]["nama_client"])) {
+		if (!empty($_FILES["logo_client"]["name"])) {
             $this->logo_client = $this->_uploadLogo();
         } else {
             $this->logo_client = $post["logo_lama"];
 		}
 
 		$this->status_id = $post["status_id"];
-		
 		$this->db->update($this->table, $this, array('id' => $post['id']));
     }
 
     public function delete($id)
     {
-		$this->_hapusLogo($id);
+		$this->_hapuslogo_client($id);
         return $this->db->delete($this->table, array("id" => $id));
-    }
-
+	}
+	
 	private function _uploadLogo()
 	{
-		$config['upload_path']          = './upload/client/';
-		$config['allowed_types']        = 'gif|jpg|png|pdf';
-		$config['file_name']            = $this->logo_client;
-		$config['overwrite']			= true;
-		$config['max_size']             = 20480; // 20MB
+		$config['upload_path']          = '././upload/client/';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['file_name']            = $this->nama_client;
+		// $config['overwrite']			= true;
+		// $config['max_size']             = 20480; // 20MB
 		// $config['max_width']            = 1024;
 		// $config['max_height']           = 768;
 
 		$this->load->library('upload', $config);
-
+		$this->upload->initialize($config);
 		if ($this->upload->do_upload('logo_client')) {
 			return $this->upload->data("file_name");
 		}
@@ -85,7 +83,7 @@ class Client_m extends CI_Model
 		return "default.jpg";
 	}
 
-	private function _hapusLogo($id)
+	private function _hapuslogo_client($id)
 	{
 		$client = $this->getById($id);
 		if ($client->logo_client != "default.jpg") {

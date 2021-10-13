@@ -72,6 +72,7 @@ class Slider extends CI_Controller
         }
         $data["title"] = "Edit Data slider";
         $data["data_slider"] = $slider->getById($id);
+		$data["data_slider"]->foto = $data["data_slider"]->foto;
         if (!$data["data_slider"]) show_404();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');

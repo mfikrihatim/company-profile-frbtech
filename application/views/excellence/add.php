@@ -58,9 +58,14 @@
 									<small class="invalid-feedback">
 										<?php echo form_error('status_id') ?>
 									</small>
+								</div>
 							</div>
 
-							<input class="btn btn-primary" type="submit" name="btn" value="Simpan" />
+							<div class="form-group row">
+								<div class="col-sm-10 offset-md-2">
+									<button type="submit" class="btn btn-primary">Simpan</button>
+								</div>
+							</div>
 						</form>
 
 					</div>
