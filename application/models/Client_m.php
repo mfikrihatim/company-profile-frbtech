@@ -60,7 +60,7 @@ class Client_m extends CI_Model
 
     public function delete($id)
     {
-		$this->_hapuslogo_client($id);
+		$this->_hapusLogo_client($id);
         return $this->db->delete($this->table, array("id" => $id));
 	}
 	
@@ -83,12 +83,12 @@ class Client_m extends CI_Model
 		return "default.jpg";
 	}
 
-	private function _hapuslogo_client($id)
+	private function _hapusLogo_client($id)
 	{
 		$client = $this->getById($id);
 		if ($client->logo_client != "default.jpg") {
 			$filename = explode(".", $client->logo_client)[0];
-			return array_map('unlink', glob(FCPATH."upload/client/$filename.*"));
+			return array_map('unlink', glob(FCPATH."././upload/client/$filename.*"));
 		}
 	}
 }
