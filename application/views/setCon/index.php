@@ -38,9 +38,9 @@
 							</thead>
 							<tbody>
 								<?php
-                                $no=1;
-                                foreach ($data_setCon as $row) : ?>
+                                $no=1; foreach ($data_setCon as $row) : ?>
                                     <tr>
+										<!-- <td><?php $row->id ?></td> -->
                                         <td><?= $no++?></td>
                                         <td><?= $row->alamat ?></td>
                                         <td><?= $row->no_telp ?></td>

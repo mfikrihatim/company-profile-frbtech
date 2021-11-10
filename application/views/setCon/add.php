@@ -15,7 +15,7 @@
 					<a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
 				</div>
                 <div class="card-body">
-					<form action="<?php base_url("setCon/add") ?>" method="post" enctype="multipart/form-data" >
+					<form action="<?php base_url('setCon/add') ?>" method="post" enctype="multipart/form-data" >
 
                     <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
@@ -78,29 +78,30 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="status_id" class="col-sm-2 col-form-label">Status Id</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" id="status_id" name="status_id">
-                                <option value="" selected disabled>Pilih</option>
-                                <option value="0" <?php if (set_value('status_id') == "0") : echo "selected";
-                                                        endif; ?>>0</option>
-                                <option value="1" <?php if (set_value('status_id') == "1") : echo "selected";
-                                                            endif; ?>>1</option>
-                            </select>
-                            <small class="text-danger">
-                                <?php echo form_error('status_id') ?>
-                            </small>
-                        </div>
-                    </div>
-
-                    
+						<label for="status_id" class="col-sm-2 col-form-label">Status Id</label>
+						<div class="col-sm-10">
+							<select class="form-control <?php echo form_error('status_id') ? 'is-invalid':'' ?>" id="status_id" name="status_id">
+								<option value="" selected disabled>Pilih</option>
+								<option value="0">0</option>
+								<option value="1">1</option>
+							</select>
+							<small class="invalid-feedback">
+								<?php echo form_error('status_id') ?>
+							</small>
+						</div>
+					</div>
 
                     <div class="form-group row">
                         <div class="col-sm-10 offset-md-2">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>
+					
                     </form>
+
+					<div class="card-footer small text-muted">
+						* required fields
+					</div>
                 </div>
             </div>
         </div>

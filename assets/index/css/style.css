@@ -61,14 +61,15 @@ h1, h2, h3, h4, h5, h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  /* background: #fff; */
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 30px 0;
 }
 #header.header-scrolled {
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 12px 0;
+  padding: 15px 0;
+	background: #fff;
 }
 #header .logo {
   font-size: 32px;
@@ -296,9 +297,9 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background: #fff;
-  padding-top: 82px;
+  /* padding-top: 82px; */
 }
 #hero h1 {
   margin: 0;
@@ -547,47 +548,65 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Services
+# Servicescolor: #36b9e3;
 --------------------------------------------------------------*/
+.services {
+  padding-bottom: 30px;
+}
 .services .icon-box {
-  text-align: center;
-  border: 1px solid #fff;
-  padding: 80px 20px;
-  transition: all ease-in-out 0.3s;
+  padding: 60px 30px;
+  position: relative;
+  overflow: hidden;
   background: #fff;
+  box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+  text-align: center;
 }
-.services .icon-box .icon {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  transition: ease-in-out 0.3s;
+.services .icon-box::before {
+  content: "";
+  position: absolute;
+  background: #fdeff2;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 100%;
+  transition: all 0.4s;
+  z-index: -1;
 }
-.services .icon-box .icon i {
+.services .icon-box:hover::before {
+  background: #36b9e3;
+  top: 0;
+  border-radius: 0px;
+}
+.services .icon {
+  margin-bottom: 15px;
+}
+.services .icon i {
+  font-size: 48px;
+  line-height: 1;
   color: #36b9e3;
-  font-size: 36px;
-  transition: 0.3s;
+  transition: all 0.3s ease-in-out;
 }
-.services .icon-box h4 {
+.services .title {
   font-weight: 700;
   margin-bottom: 15px;
-  font-size: 24px;
+  font-size: 18px;
 }
-.services .icon-box h4 a {
-  color: #5f687b;
-  transition: ease-in-out 0.3s;
+.services .title a {
+  color: #111;
 }
-.services .icon-box p {
-  line-height: 24px;
-  font-size: 14px;
+.services .description {
+  font-size: 15px;
+  line-height: 28px;
   margin-bottom: 0;
 }
-.services .icon-box:hover {
-  border-color: #eaecef;
+.services .icon-box:hover .title a, .services .icon-box:hover .description {
+  color: #fff;
 }
-.services .icon-box:hover h4 a {
-  color: #36b9e3;
+.services .icon-box:hover .icon i {
+  color: #fff;
 }
 
 /*--------------------------------------------------------------
@@ -727,22 +746,22 @@ section {
 }
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
-  border-radius: 50%;
-  margin: -40px 0 0 40px;
-  position: relative;
+  border-radius: 0;
+  margin: 80px 0 0 0;
+  position: absolute;
   z-index: 2;
   border: 6px solid #fff;
 }
 .testimonials .testimonial-item h3 {
   font-size: 18px;
   font-weight: bold;
-  margin: 10px 0 5px 45px;
+  margin: 10px 0 5px 0px;
   color: #111;
 }
 .testimonials .testimonial-item h4 {
   font-size: 14px;
   color: #999;
-  margin: 0 0 0 45px;
+  margin: 0 0 0 0px;
 }
 .testimonials .testimonial-item .quote-icon-left, .testimonials .testimonial-item .quote-icon-right {
   color: #e4e6ea;
@@ -762,7 +781,7 @@ section {
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 0 15px 0 15px;
-  padding: 20px 20px 60px 20px;
+  padding: 00px 20px 60px 0px;
   background: white;
   position: relative;
   border-radius: 6px;
@@ -866,7 +885,40 @@ section {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-.contact .info {
+.contact .icon-box {
+  padding: 30px 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+  text-align: center;
+}
+.contact .icon {
+  margin-bottom: 15px;
+}
+.contact .icon i {
+  font-size: 48px;
+  line-height: 1;
+  color: #36b9e3;
+  transition: all 0.3s ease-in-out;
+}
+.contact .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.contact .title a {
+  color: #111;
+}
+.contact .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+/* .contact .info {
   border-top: 3px solid #36b9e3;
   border-bottom: 3px solid #36b9e3;
   padding: 30px;
@@ -1012,7 +1064,7 @@ section {
   100% {
     transform: rotate(360deg);
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # Breadcrumbs

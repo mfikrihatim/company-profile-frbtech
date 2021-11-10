@@ -88,7 +88,7 @@ class Client_m extends CI_Model
 		$client = $this->getById($id);
 		if ($client->logo_client != "default.jpg") {
 			$filename = explode(".", $client->logo_client)[0];
-			return array_map('unlink', glob(FCPATH."././upload/client/$filename.*"));
+			return array_map('unlink', glob(FCPATH."upload/client/$filename.*"));
 		}
 	}
 }
