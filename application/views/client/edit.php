@@ -32,7 +32,7 @@
                     <div class="form-group row">
                         <label for="logo_client" class="col-sm-2 col-form-label">Logo Client</label>
                         <div class="col-sm-10">
-							<input class="form-control-file <?php echo form_error('logo_client') ? 'is-invalid':'' ?>" type="file" name="logo" />
+							<input class="form-control-file <?php echo form_error('logo_client') ? 'is-invalid':'' ?>" type="file" name="logo_client" />
 							<input type="hidden" name="logo_lama" value="<?php echo $data_client->logo_client ?>" />
 							<img src="<?php echo site_url() . "upload/client/"   . $data_client->logo_client ?>" width="100" height="100">
 							<small class="invalid-feedback">

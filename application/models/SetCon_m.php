@@ -4,8 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class SetCon_m extends CI_Model
 {
     private $table = 'setting_contact';
-
-	public $id;
     public $alamat;
     public $no_telp;
     public $email;
@@ -63,13 +61,13 @@ class SetCon_m extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->alamat = $post['alamat'];
-        $this->no_telp = $post['no_telp'];
-        $this->email = $post['email'];
-        $this->instagram = $post['instagram'];
-        $this->linkedin = $post['linkedin'];
-        $this->whatsapp = $post['whatsapp'];
-        $this->status_id = $post['status_id'];
+        $this->alamat = $post["alamat"];
+        $this->no_telp = $post["no_telp"];
+        $this->email = $post["email"];
+        $this->instagram = $post["instagram"];
+        $this->linkedin = $post["linkedin"];
+        $this->whatsapp = $post["whatsapp"];
+        $this->status_id = $post["status_id"];
         
         $this->db->insert($this->table, $this);
     }
@@ -77,14 +75,13 @@ class SetCon_m extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->alamat = $post['alamat'];
-        $this->no_telp = $post['no_telp'];
-        $this->email = $post['email'];
-        $this->instagram = $post['instagram'];
-        $this->linkedin = $post['linkedin'];
-        $this->whatsapp = $post['whatsapp'];
-        $this->status_id = $post['status_id'];
-        
+        $this->alamat = $post["alamat"];
+        $this->no_telp = $post["no_telp"];
+        $this->email = $post["email"];
+        $this->instagram = $post["instagram"];
+        $this->linkedin = $post["linkedin"];
+        $this->whatsapp = $post["whatsapp"];
+        $this->status_id = $post["status_id"];
         $this->db->update($this->table, $this, array('id' => $post['id']));
     }
 

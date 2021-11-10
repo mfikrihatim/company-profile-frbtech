@@ -43,7 +43,7 @@ class Product_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
 
-		return $this->db->get($this->table)->result();
+		// return $this->db->get($this->table)->result();
     }
 
     public function save()
