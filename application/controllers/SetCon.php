@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
@@ -10,7 +9,7 @@ class SetCon extends CI_Controller
         $this->load->model("SetCon_m");
 
         if($this->session->userdata('status_id') != '1'){
-            $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger alert-dismissible fade show" role="alert">
             Anda belum Login!
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -22,7 +21,7 @@ class SetCon extends CI_Controller
     public function index()
     {
 
-        $data["title"] = "List Data setCon";
+        $data["title"] = "List Data Setting Contact";
         $data["data_setCon"] = $this->SetCon_m->getAll();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar');
@@ -33,9 +32,9 @@ class SetCon extends CI_Controller
 
     public function add()
     {
-        $setCon = $this->SetCon_m;
-        $validation = $this->form_validation;
-        $validation->set_rules($setCon->rules());
+        $setCon = $this->SetCon_m; 
+        $validation = $this->form_validation; 
+        $validation->set_rules($setCon->rules()); 
         if ($validation->run()) {
             $setCon->save();
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" role="alert">

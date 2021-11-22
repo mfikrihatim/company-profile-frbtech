@@ -23,8 +23,6 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?= base_url(); ?>user" class="nav-link">
               <i class="fas fa-users"></i>
@@ -95,12 +93,6 @@
               <p>Ganti password</p>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a href="<?= base_url(); ?>auth" class="nav-link">
-              <i class="fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
-          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
