@@ -52,8 +52,6 @@
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto " href="#client">Client</a></li>
-          <!-- <li><a class="nav-link scrollto " href="#testimonials">Testimonials</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li> -->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 				</ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -91,10 +89,6 @@
 				?>
 				<div class="carousel-item <?= $actives; ?>">
 					<div class="row">
-						<!-- <div class="col-lg-2 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-							<h1 class="display-1"><?= $dasi->judul; ?></h1>
-							<h2 class="text-secondary"><?= $dasi->deskripsi; ?></h2>
-						</div> -->
 						<div class="d-block w-100">
 							<img src="<?php echo base_url('././upload/slider/'.$dasi->foto) ?>" class="img-fluid animated fade-out-left">
 							<div class="carousel-caption mb-5">
@@ -141,22 +135,23 @@
 							<li></li>
 
               <i class="bi bi-trophy-fill"> Profesional</i>
-							<li> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+							<li> We have people who are professionals in their fields.</li>
 							<li></li>
 
               <i class="bi bi-phone"> Great Support</i>
-							<li> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda</li>
+							<li> We fully support your request, and we are ready to help whatever your business problem.</li>
               <li></li>
 
 							<i class="bi bi-person-check-fill"> Dedicated Team</i>
-							<li> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda</li>
+							<li> We have people who have been dedicated for years in technology</li>
 							<li></li>
 						</ul>
           </div>
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section>
+		<!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
     <section id="counts" class="counts">
@@ -234,37 +229,24 @@
     </section>
 		<!-- End Services Section -->
 
-    <!-- ======= Portfolio Section ======= -->
-    <section id="client" class="portfolio">
+    <!-- ======= client Section ======= -->
+    <section id="client" class="client">
       <div class="container">
 
         <div class="section-title">
           <span>Client</span>
           <h2>Client</h2>
-          <p>Ini test design client dan masih memakai data product di template bagian portfolio</p>
+          <p>Ini test design client dan masih memakai data product di template bagian client</p>
         </div>
 
-        <!-- <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div> -->
-
-        <div class="row portfolio-container">
+        <div class="row client-container">
 					
 					<?php foreach($data_client as $dacli): ?>
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 client-item filter-app">
             <img src="<?php echo base_url('././upload/client/'.$dacli->logo_client) ?>" class="img-fluid" alt="">
-            <div class="portfolio-info">
+            <div class="client-info">
               <h4><?= $dacli->nama_client; ?></h4>
-              <!-- <p><?= $dacli->deskripsi; ?></p> -->
-              <a href="<?php echo base_url('././upload/client/'.$dacli->logo_client); ?>" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <a href="<?php echo base_url('././upload/client/'.$dacli->logo_client); ?>" data-gallery="clientGallery" class="client-lightbox preview-link" title="<?= $dacli->nama_client ?>"><i class="bi bi-zoom-in"></i></a>
             </div>
           </div>
 					<?php endforeach; ?>
@@ -273,79 +255,7 @@
 
       </div>
     </section>
-		<!-- End Portfolio Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <!-- <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <span>Client</span>
-          <h2>Client</h2>
-          <p>Ini test design client dan masih memakai data product di template bagian testimonials</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-						
-						<?php foreach($data_product as $dapro): ?>
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-                <img src="<?php echo base_url('././upload/product/'.$dapro->foto); ?>" class="testimonial-img" alt="">
-                <h3><?= $dapro->nama; ?></h3>
-                <h4><?= $dapro->deskripsi; ?></h4>
-              </div>
-            </div>
-						<?php endforeach; ?>
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section> -->
-		<!-- End Testimonials Section -->
-
-    <!-- ======= Team Section ======= -->
-    <!-- <section id="team" class="team section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <span>Client</span>
-          <h2>Client</h2>
-          <p>Ini test design client dan masih memakai data product di template bagian team</p>
-        </div>
-
-        <div class="row">
-					<?php foreach($data_product as $dapro): ?>
-          <div class="col-lg-3 col-md-2 d-flex align-items-stretch">
-            <div class="member">
-              <img src="<?php echo base_url('././upload/product/'.$dapro->foto); ?>" style="height: 300px; width: 300px;">
-              <h4><?= $dapro->nama; ?></h4>
-              <span><?= $dapro->deskripsi; ?></span>
-              <p>
-                Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-              </p>
-              <div class="social">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-					<?php endforeach; ?>
-
-        </div>
-
-      </div>
-    </section> -->
-		<!-- End Team Section -->
+		<!-- End client Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -385,7 +295,8 @@
     </section>
 		<!-- End Contact Section -->
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -415,13 +326,7 @@
       <div class="copyright">
         &copy; Copyright <strong><span>FRB Technology</span></strong>. All Rights Reserved
       </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/enno-free-simple-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      
     </div>
   </footer><!-- End Footer -->
 

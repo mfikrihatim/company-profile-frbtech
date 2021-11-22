@@ -166,25 +166,25 @@
   });
 
   /**
-   * Porfolio isotope and filter
+   * Client isotope and filter
    */
   window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item'
+    let clientContainer = select('.client-container');
+    if (clientContainer) {
+      let clientIsotope = new Isotope(clientContainer, {
+        itemSelector: '.client-item'
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+      let clientFilters = select('#client-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
+      on('click', '#client-flters li', function(e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
+        clientFilters.forEach(function(el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
 
-        portfolioIsotope.arrange({
+        clientIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
 
@@ -194,16 +194,16 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate client lightbox 
    */
-  const portfolioLightbox = GLightbox({
-    selector: '.portfolio-lightbox'
+  const clientLightbox = GLightbox({
+    selector: '.client-lightbox'
   });
 
   /**
-   * Portfolio details slider
+   * client details slider
    */
-  new Swiper('.portfolio-details-slider', {
+  new Swiper('.client-details-slider', {
     speed: 400,
     loop: true,
     autoplay: {
@@ -216,36 +216,6 @@
       clickable: true
     }
   });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
-
 
   /**
    *Slider

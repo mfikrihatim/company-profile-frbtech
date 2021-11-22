@@ -16,6 +16,16 @@
 				</div>
                 <div class="card-body">
 				<form action="<?php base_url("setCon/edit") ?>" method="post" enctype="multipart/form-data" >
+					<div class="form-group row">
+                        <label for="id" class="col-sm-2 col-form-label">Id</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="id" name="id" value=" <?= $data_setCon->id; ?>" readonly>
+                            <small class="text-danger">
+                                <?php echo form_error('id') ?>
+                            </small>
+                        </div>
+                    </div>
+
 
                     <div class="form-group row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
