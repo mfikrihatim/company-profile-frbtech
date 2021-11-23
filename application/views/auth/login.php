@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 </head>
 <div class="container pt-5">
+	<h3><? $title ?></h3>
     <div class="card mx-auto" style="width:80%;">
         <div class="card-body">
             <?php echo $this->session->flashdata('pesan') ?>
@@ -21,6 +22,7 @@
                 <hr>    
                 <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Login</button>
             </form>
+			<a href="<?php echo base_url()?>" class="w-100 btn btn-lg btn-success">Go to index page</a>
         </div>
     </div>
     
