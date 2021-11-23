@@ -13,12 +13,14 @@ class Auth extends CI_Controller
     public function index()
     {
         $data["title"] = "Login";
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('auth/login');
     }
 
     public function login()
     {
+		$data["title"] = "Login";
+		$this->load->view('templates/header', $data);
         $this->form_validation->set_rules('username','Username','required');
         $this->form_validation->set_rules('password','Password','required');
 

@@ -142,7 +142,7 @@
 							<li> We fully support your request, and we are ready to help whatever your business problem.</li>
               <li></li>
 
-							<i class="bi bi-person-check-fill"> Dedicated Team</i>
+							<i class="bi bi-person-check-fill"> Dedicated contact</i>
 							<li> We have people who have been dedicated for years in technology</li>
 							<li></li>
 						</ul>
@@ -257,43 +257,50 @@
     </section>
 		<!-- End client Section -->
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+		<!-- ======= contact Section ======= -->
+		<section id="contact" class="contact section-bg">
       <div class="container">
 
         <div class="section-title">
-          <span>Contact</span>
-          <h2>Contact</h2>
+          <span>contact</span>
+          <h2>contact</h2>
           <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
         </div>
 
-        <div class="row mx-auto">
-          <div class="col-md-3 col-lg-2 d-flex mx-auto align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-geo-alt"></i></div>
-              <h4 class="title"><a href="#">Location: </a></h4>
-              <p class="description">Bogor, Indonesia</p>
-            </div>
-          </div>
-					<div class="col-md-3 col-lg-2 d-flex mx-auto align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-envelope"></i></div>
-              <h4 class="title"><a href="mailto:info@frbtech.id">Email: </a></h4>
-              <p class="description">info@frbtech.id</p>
-            </div>
-          </div>
-					<div class="col-md-3 col-lg-2 d-flex mx-auto align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="bi bi-phone"></i></div>
-              <h4 class="title"><a href="tel:+6281218477162">Call:</a></h4>
-              <p class="description">+62 812-1847-7162</p>
-            </div>
-          </div>
+        <div class="row">
 					
+					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
+						<div class="card-body">
+							<div class="icon-box">
+								<div class="icon"><i class="bi bi-geo-alt"></i></div>
+								<p class="card-text">Bogor, Indonesia</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
+						<div class="card-body">
+							<div class="icon-box">
+								<div class="icon"><i class="bi bi-envelope"></i></div>
+								<p class="card-text">info@frbtech.id</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
+						<div class="card-body">
+							<div class="icon-box">
+								<div class="icon"><i class="bi bi-phone"></i></div>
+								<p class="card-text">+62 812-1847-7162</p>
+							</div>
+						</div>
+					</div>
+
         </div>
+
       </div>
     </section>
-		<!-- End Contact Section -->
+		<!-- End contact Section -->
 
   </main>
   <!-- End #main -->
