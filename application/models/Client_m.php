@@ -33,6 +33,14 @@ class Client_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    
+	public function getByStatusId()
+    {
+        $this->db->from($this->table);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->query("SELECT * FROM $this->table WHERE status_id = 1");
+        return $query->result();
+    }
 
     public function save()
     {   
@@ -67,7 +75,7 @@ class Client_m extends CI_Model
 	private function _uploadLogo()
 	{
 		$config['upload_path']          = '././upload/client/';
-		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG|svg';
 		$config['file_name']            = $this->nama_client;
 		// $config['overwrite']			= true;
 		// $config['max_size']             = 20480; // 20MB

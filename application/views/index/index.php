@@ -120,32 +120,22 @@
     <section id="about" class="about">
       <div class="container">
 
-        <div class="row">
+        <div class="row justify-content-center mx-auto px-3">
           <div class="col-lg-4">
             <img src="assets/index/img/about.png" class="img-fluid" alt="">
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
+          <div class="col-lg-8 pt-5 pt-lg-0 content">
             <h3>WHY US?</h3>
             <p class="fst-italic">
 							Why You Choose <span style="color: #36b9e3;">FRB Technology</span>
             </p>
+						<?php foreach($data_excellence as $daex): ?>
             <ul>
-							<i class="bi bi-check-circle"> Trusted </i>
-              <li>  We have been trusted by many clients and for us trust is the main thing. </li>
-							<li></li>
-
-              <i class="bi bi-trophy-fill"> Profesional</i>
-							<li> We have people who are professionals in their fields.</li>
-							<li></li>
-
-              <i class="bi bi-phone"> Great Support</i>
-							<li> We fully support your request, and we are ready to help whatever your business problem.</li>
-              <li></li>
-
-							<i class="bi bi-person-check-fill"> Dedicated contact</i>
-							<li> We have people who have been dedicated for years in technology</li>
+							<i><img src="<?php echo base_url('././upload/excellence/'.$daex->icon) ?>" class="mx-2"></img><?= $daex->judul; ?></i>
+              <li><?= $daex->deskripsi; ?></li>
 							<li></li>
 						</ul>
+						<?php endforeach; ?>
           </div>
         </div>
 
@@ -154,7 +144,7 @@
 		<!-- End About Section -->
 
     <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
+    <!-- <section id="counts" class="counts">
       <div class="container">
 
         <div class="row counters">
@@ -182,7 +172,8 @@
         </div>
 
       </div>
-    </section><!-- End Counts Section -->
+    </section> -->
+		<!-- End Counts Section -->
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
@@ -191,38 +182,20 @@
 				<div class="section-title">
 					<span>Services</span>
           <h2>Services</h2>
-          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+          <p>Why you choose <a style="color: #36b9e3;">FRB Technology</a></p>
         </div>
 				
 				<div class="row mx-auto">
+					<?php foreach($data_services as $daser): ?>
 					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
 						<div class="icon-box">
-							<div class="icon"><i class="bx bx-world"></i></div>
-							<h4 class="title"><a href="#">WEBSITE</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+							<div class="icon"><img src="<?php echo base_url('././upload/services/'.$daser->icon); ?>"></div>
+							<h4 class="title"><a href="#"><?= $daser->judul; ?></a></h4>
+							<p class="description"><?= $daser->deskripsi; ?></p>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box">
-							<div class="icon"><i class="bx bx-mobile-alt"></i></div>
-							<h4 class="title"><a href="#">MOBILE</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box">
-							<div class="icon"><i class="bx bx-layout"></i></div>
-							<h4 class="title"><a href="#">UI/UX DESIGN</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-						<div class="icon-box">
-							<div class="icon"><i class="bx bx-desktop"></i></div>
-							<h4 class="title"><a href="#">DEKSTOP</a></h4>
-							<p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-						</div>
-					</div>
+					<?php endforeach; ?>
+					
         </div>
 
       </div>
@@ -236,7 +209,6 @@
         <div class="section-title">
           <span>Client</span>
           <h2>Client</h2>
-          <p>Ini test design client dan masih memakai data product di template bagian client</p>
         </div>
 
         <div class="row client-container">
@@ -264,11 +236,9 @@
         <div class="section-title">
           <span>contact</span>
           <h2>contact</h2>
-          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
         </div>
 
         <div class="row">
-					
 					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
 						<div class="card-body">
 							<div class="icon-box">
@@ -295,7 +265,6 @@
 							</div>
 						</div>
 					</div>
-
         </div>
 
       </div>
@@ -315,15 +284,18 @@
         <div class="row  justify-content-center">
           <div class="col-lg-6">
             <h3>FRB Technology</h3>
+						<p>Quick access</p>
           </div>
         </div>
-
+						
         <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+					<?php foreach($data_setCon as $daset): ?>
+          <a href="<?= $daset->no_telp; ?>" class="no_telp"><i class='bx bx-phone-call'></i></a>
+          <a href="<?= $daset->email; ?>" class="email"><i class='bx bx-envelope'></i></a>
+          <a href="<?= $daset->instagram; ?>" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="<?= $daset->linkedin; ?>" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="<?= $daset->whatsapp; ?>" class="whatsapp"><i class='bx bxl-whatsapp' ></i></a>
+					<?php endforeach; ?>
         </div>
 
       </div>

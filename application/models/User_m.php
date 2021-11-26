@@ -38,6 +38,14 @@ class User_m extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+	
+	public function getByStatusId()
+    {
+        $this->db->from($this->table);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->query("SELECT * FROM $this->table WHERE status_id = 1");
+        return $query->result();
+    }
 
     public function save()
     {

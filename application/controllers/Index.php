@@ -18,13 +18,13 @@ class Index extends CI_Controller
 
     public function index()
     {
-		$data["data_product"] = $this->Product_m->getAll();
-        $data["data_client"] = $this->Client_m->getAll();
-        $data["data_excellence"] = $this->Excellence_m->getAll();
-        $data["data_portofolio"] = $this->Portofolio_m->getAll();
-        $data["data_services"] = $this->Services_m->getAll();
-        $data["data_setCon"] = $this->SetCon_m->getAll();
-        $data["data_slider"] = $this->Slider_m->getAll();
+		$data["data_product"] = $this->Product_m->getByStatusId();
+        $data["data_client"] = $this->Client_m->getByStatusId();
+        $data["data_excellence"] = $this->Excellence_m->getByStatusId();
+        $data["data_portofolio"] = $this->Portofolio_m->getByStatusId();
+        $data["data_services"] = $this->Services_m->getByStatusId();
+        $data["data_setCon"] = $this->SetCon_m->getByStatusId();
+        $data["data_slider"] = $this->Slider_m->getByStatusId();
         $this->load->view('index/index', $data);
     }
 }

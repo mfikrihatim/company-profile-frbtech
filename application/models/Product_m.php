@@ -42,8 +42,14 @@ class Product_m extends CI_Model
         $this->db->order_by("id", "desc");
         $query = $this->db->get();
         return $query->result();
-
-		// return $this->db->get($this->table)->result();
+    }
+	
+	public function getByStatusId()
+    {
+        $this->db->from($this->table);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->query("SELECT * FROM $this->table WHERE status_id = 1");
+        return $query->result();
     }
 
     public function save()
@@ -83,7 +89,7 @@ class Product_m extends CI_Model
 	private function _uploadFoto()
 	{
 		$config['upload_path']          = '././upload/product/';
-		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG|svg';
 		$config['file_name']            = $this->nama;
 		// $config['overwrite']			= true;
 		// $config['max_size']             = 20480; // 20MB

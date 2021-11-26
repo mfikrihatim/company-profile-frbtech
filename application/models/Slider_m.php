@@ -40,6 +40,14 @@ class Slider_m extends CI_Model
         return $query->result();
     }
 
+	public function getByStatusId()
+    {
+        $this->db->from($this->table);
+        $this->db->order_by("id", "desc");
+        $query = $this->db->query("SELECT * FROM $this->table WHERE status_id = 1");
+        return $query->result();
+    }
+
     public function save()
     {   
 		$post = $this->input->post();
@@ -75,7 +83,7 @@ class Slider_m extends CI_Model
 	private function _uploadFoto()
 	{
 		$config['upload_path']          = '././upload/slider/';
-		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
+		$config['allowed_types']        = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG|svg';
 		$config['file_name']            = $this->judul;
 		// $config['overwrite']			= true;
 		// $config['max_size']             = 20480; // 20MB
