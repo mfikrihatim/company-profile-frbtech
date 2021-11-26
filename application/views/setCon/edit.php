@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="no_telp" class="col-sm-2 col-form-label">No Telepon</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="no_telp" name="no_telp" value=" <?= $data_setCon->no_telp; ?>">
+                            <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?= $data_setCon->no_telp; ?>">
                             <small class="text-danger">
                                 <?php echo form_error('no_telp') ?>
                             </small>

@@ -516,12 +516,16 @@ section {
   padding: 0;
 }
 .about .content ul li {
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+	margin-left: 10px;
 }
-.about .content ul i {
-  font-size: 20px;
+.about .content ul i{
+	font-size: 20px;
   padding-right: 4px;
   color: #36b9e3;
+}
+.about .content ul img{
+	filter: invert(56%) sepia(96%) saturate(682%) hue-rotate(160deg) brightness(101%) contrast(78%);
 }
 .about .content p:last-child {
   margin-bottom: 0;
@@ -548,7 +552,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Servicescolor: #36b9e3;
+# Services
 --------------------------------------------------------------*/
 .services {
   padding-bottom: 30px;
@@ -589,6 +593,12 @@ section {
   color: #36b9e3;
   transition: all 0.3s ease-in-out;
 }
+.services .icon img {
+  font-size: 48px;
+  line-height: 1;
+	filter: invert(56%) sepia(96%) saturate(682%) hue-rotate(160deg) brightness(101%) contrast(78%);
+  transition: all 0.3s ease-in-out;
+}
 .services .title {
   font-weight: 700;
   margin-bottom: 15px;
@@ -607,6 +617,9 @@ section {
 }
 .services .icon-box:hover .icon i {
   color: #fff;
+}
+.services .icon-box:hover .icon img{
+	filter: invert(100%) sepia(0%) saturate(7485%) hue-rotate(252deg) brightness(104%) contrast(105%);
 }
 
 /*--------------------------------------------------------------
