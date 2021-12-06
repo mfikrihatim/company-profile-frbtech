@@ -63,7 +63,7 @@
 
   <!-- ======= Hero Section ======= -->
 	<section id="hero" class="d-flex align-items-center ">
-		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+		<div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
 			<div class="carousel-indicators justify-content-center mx-auto mb-5" style="color: black;">
 				<?php 
 					$i = 0;
@@ -73,7 +73,7 @@
 							$actives = 'active';
 						}
 				?>
-				<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i; ?>" class="<?= $actives; ?> mx-1 p-1bg-primary"></button>
+				<button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="<?= $i; ?>" class="<?= $actives; ?> mx-1 p-1bg-primary"></button>
 				<?php $i++; } ?>
 			</div>
 
@@ -90,8 +90,8 @@
 				<div class="carousel-item <?= $actives; ?>">
 					<div class="row">
 						<div class="d-block w-100">
-							<img src="<?php echo base_url('././upload/slider/'.$dasi->foto) ?>" class="img-fluid animated fade-out-left">
-							<div class="carousel-caption mb-5">
+							<img src="<?php echo base_url('././upload/slider/'.$dasi->foto) ?>" class="img-fluid animated fade-out-left" style="max-height: 105vh; width:fit-content; ">
+							<div class="carousel-caption align-items-center">
 								<h1 class="text-white display-1"><?= $dasi->judul; ?></h1>
 								<h2 class="text-white"><?= $dasi->deskripsi; ?></h2>
 							</div>
@@ -100,16 +100,18 @@
 				</div>	
 				<?php $i++; } ?>
 			</div>
+
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+
 		</div>
 		
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
 		
   </section>
 	<!-- End Hero -->
@@ -232,12 +234,10 @@
 		<!-- ======= contact Section ======= -->
 		<section id="contact" class="contact section-bg">
       <div class="container">
-
         <div class="section-title">
           <span>contact</span>
           <h2>contact</h2>
         </div>
-
         <div class="row">
 					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
 						<div class="card-body">
@@ -247,7 +247,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
 						<div class="card-body">
 							<div class="icon-box">
@@ -256,7 +255,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="card mx-auto my-2" style="border: none; background: none; width: 18rem;">
 						<div class="card-body">
 							<div class="icon-box">
@@ -266,21 +264,16 @@
 						</div>
 					</div>
         </div>
-
       </div>
     </section>
 		<!-- End contact Section -->
-
   </main>
   <!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
-
     <div class="footer-top">
-
       <div class="container">
-
         <div class="row  justify-content-center">
           <div class="col-lg-6">
             <h3>FRB Technology</h3>
@@ -310,7 +303,6 @@
   </footer><!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
   <!-- Vendor JS Files -->
   <script src="assets/index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/index/vendor/glightbox/js/glightbox.min.js"></script>
@@ -318,7 +310,6 @@
   <script src="assets/index/vendor/php-email-form/validate.js"></script>
   <script src="assets/index/vendor/purecounter/purecounter.js"></script>
   <script src="assets/index/vendor/swiper/swiper-bundle.min.js"></script>
-
   <!-- Template Main JS File -->
   <script src="assets/index/js/main.js"></script>
 

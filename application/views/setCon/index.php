@@ -15,7 +15,6 @@
                     echo $this->session->flashdata('message');
                 endif; ?>
             </div>
-
             <div class="card">
 				<div class="card-header">
 					<a href="<?php echo site_url('setCon/add') ?>"><i class="fas fa-plus"></i> Add New</a>
@@ -63,7 +62,6 @@
         </div>
     </div>
 </div>
-
 <!-- Modal dialog hapus data-->
 <div class="modal fade" id="myModalDelete" tabindex="-1" aria-labelledby="myModalDeleteLabel" aria-hidden="true">
     <div class="modal-dialog">
