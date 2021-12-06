@@ -17,10 +17,6 @@ class Slider_m extends CI_Model
             'label' => 'judul',  
             'rules' => 'trim|required'],
 
-            ['field' => 'deskripsi',
-            'label' => 'deskripsi',
-            'rules' => 'trim|required'],
-
 			['field' => 'status_id',
             'label' => 'status_id',
             'rules' => 'trim|required']

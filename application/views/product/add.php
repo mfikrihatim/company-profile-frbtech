@@ -25,7 +25,6 @@
 								</small>
 							</div>
 						</div>
-						
 						<div class="form-group row">
 							<label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi*</label>
 								<div class="col-sm-10">
@@ -35,7 +34,6 @@
 								</small>
 							</div>
 						</div>
-
 						<div class="form-group row">
 							<label for="foto" class="col-sm-2 col-form-label">Foto</label>
 							<div class="col-sm-10">
@@ -46,7 +44,6 @@
 								</small>
 							</div>
 						</div>
-
 						<div class="form-group row">
 							<label for="link" class="col-sm-2 col-form-label">Link*</label>
 							<div class="col-sm-10">
@@ -56,7 +53,6 @@
 								</small>
 							</div>
 						</div>
-
 						<div class="form-group row">
 							<label for="status_id" class="col-sm-2 col-form-label">Status Id</label>
 							<div class="col-sm-10">
@@ -70,14 +66,12 @@
 								</small>
 							</div>
 						</div>
-
 						<div class="form-group row">
 							<div class="col-sm-10 offset-md-2">
 								<button type="submit" class="btn btn-primary">Simpan</button>
 							</div>
 						</div>
 					</form>
-
 					<div class="card-footer small text-muted">
 						* required fields
 					</div>
